@@ -1,0 +1,73 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+/*
+Problem:
+Check whether string s is a subsequence of string t.
+
+Example:
+s = "abc"
+t = "ahbgdc"
+Output = true
+*/
+
+bool isSubsequence(string s, string t) {
+    int i = 0, j = 0;
+    int n = s.size();
+    int m = t.size();
+
+    while (i < n && j < m) {
+        if (s[i] == t[j]) {
+            i++;    // move s pointer when matched
+        }
+        j++;        // always move t pointer
+    }
+
+    return i == n;   // if all characters of s are matched
+}
+
+int main() {
+    string s = "abc";
+    string t = "ahbgdc";
+
+    if (isSubsequence(s, t))
+        cout << "true";
+    else
+        cout << "false";
+
+    return 0;
+}
+
+
+public class Main {
+
+    public static boolean isSubsequence(String s, String t) {
+        int i = 0, j = 0;
+        int n = s.length();
+        int m = t.length();
+
+        while (i < n && j < m) {
+            if (s.charAt(i) == t.charAt(j)) {
+                i++;    // move s pointer if matched
+            }
+            j++;        // always move t pointer
+        }
+        return i == n;
+    }
+
+    public static void main(String[] args) {
+        String s = "abc";
+        String t = "ahbgdc";
+
+        if (isSubsequence(s, t))
+            System.out.println("true");
+        else
+            System.out.println("false");
+    }
+}
+
+/*
+Time Complexity: O(m)
+Space Complexity: O(1)
+*/
