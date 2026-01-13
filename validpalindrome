@@ -1,0 +1,84 @@
+/******************************************************
+ PROBLEM: Valid Palindrome
+
+ A string is a palindrome if after converting to
+ lowercase and removing non-alphanumeric characters,
+ it reads the same forward and backward.
+
+ Example:
+ Input: "A man, a plan, a canal: Panama"
+ Output: true
+******************************************************/
+
+// ================= C++ IMPLEMENTATION =================
+
+#include <iostream>
+#include <string>
+#include <cctype>
+using namespace std;
+
+bool isPalindromeCPP(string s) {
+    string clean = "";
+
+    // remove non-alphanumeric and convert to lowercase
+    for (char c : s) {
+        if (isalnum(c)) {
+            clean += tolower(c);
+        }
+    }
+
+    int low = 0, high = clean.length() - 1;
+
+    while (low < high) {
+        if (clean[low] != clean[high])
+            return false;
+        low++;
+        high--;
+    }
+    return true;
+}
+
+// ================= JAVA IMPLEMENTATION =================
+
+/*
+public class Main {
+
+    public static boolean isPalindromeJava(String s) {
+        s = s.replaceAll("[^a-zA-Z0-9]", "");
+        s = s.toLowerCase();
+
+        int low = 0, high = s.length() - 1;
+
+        while (low < high) {
+            if (s.charAt(low) != s.charAt(high))
+                return false;
+            low++;
+            high--;
+        }
+        return true;
+    }
+
+    public static void main(String[] args) {
+        String s = "A man, a plan, a canal: Panama";
+        System.out.println(isPalindromeJava(s));
+    }
+}
+*/
+
+// ================= C++ MAIN =================
+
+int main() {
+    string s = "A man, a plan, a canal: Panama";
+
+    if (isPalindromeCPP(s))
+        cout << "true";
+    else
+        cout << "false";
+
+    return 0;
+}
+
+/*
+Time Complexity: O(n)
+Space Complexity: O(n)  (for cleaned string)
+*/
