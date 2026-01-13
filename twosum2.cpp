@@ -48,3 +48,53 @@ int main() {
 Time Complexity: O(n)
 Space Complexity: O(1)
 */
+//IN JAVA 
+/*
+Problem:
+Given a sorted array, find two numbers such that their sum equals the target.
+Return their 1-based indices.
+
+Example:
+numbers = [2,7,11,15]
+target = 9
+Output = [1,2]
+*/
+
+public class Main {
+
+    public static int[] twoSum(int[] numbers, int target) {
+        int left = 0;
+        int right = numbers.length - 1;
+
+        while (left < right) {
+            int sum = numbers[left] + numbers[right];
+
+            if (sum == target) {
+                return new int[]{left + 1, right + 1}; // 1-based index
+            }
+            else if (sum > target) {
+                right--;
+            }
+            else {
+                left++;
+            }
+        }
+        return new int[]{-1, -1};
+    }
+
+    public static void main(String[] args) {
+
+        int[] numbers = {2, 7, 11, 15};
+        int target = 9;
+
+        int[] result = twoSum(numbers, target);
+
+        System.out.println("Index 1 = " + result[0]);
+        System.out.println("Index 2 = " + result[1]);
+    }
+}
+
+/*
+Time Complexity: O(n)
+Space Complexity: O(1)
+*/
